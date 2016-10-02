@@ -16,6 +16,6 @@ install:
 - bash ci/travis/install_python.sh $HOME/miniconda
 - export PATH="$HOME/miniconda/bin:$PATH"
 script:
-  - conda build recipe -c conda-forge -c csdms
+  - conda build recipe -c conda-forge -c csdms/channel/dev -c csdms
 after_success:
   - bash .ci/travis/deploy_to_anaconda.sh $THIS_PACKAGE
