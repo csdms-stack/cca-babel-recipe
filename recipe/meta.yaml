@@ -1,0 +1,45 @@
+{% set name = "cca-babel" %}
+{% set version = "1.4.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/csdms/{{ name }}
+  patches:
+    - mac-inline.patch [osx]
+    - override-java.patch [unix]
+
+requirements:
+  build:
+    - python
+    - numpy
+    - libxml2
+    - gcc
+    - libgcc
+    - libgfortran
+    - chasm
+    - libparsifal
+    - libtool
+    - pkgconfig
+
+  run:
+    - python
+    - numpy
+    - libxml2
+    - gcc
+    - libgcc
+    - libgfortran
+    - chasm
+    - libparsifal
+    - libtool
+    - pkgconfig
+
+build:
+  script_env:
+    - JAVA_HOME
+    - CC
+    - CXX
+    - FC
+  string: {{ environ.get('BUILD_STR', '') + environ.get('COMPILER', '') }}

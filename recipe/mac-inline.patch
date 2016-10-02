@@ -1,0 +1,36 @@
+diff -u runtime/sidlx/sidlx_common.c runtime/sidlx/sidlx_common.c
+--- runtime/sidlx/sidlx_common.c	2015-10-02 15:01:56.000000000 -0600
++++ runtime/sidlx/sidlx_common.c	2015-10-02 15:02:16.000000000 -0600
+@@ -282,14 +282,14 @@
+   return(n);
+ }
+ 
+-inline int s_bind( int sockfd, const struct sockaddr * myaddr, socklen_t addrlen) { 
++int s_bind( int sockfd, const struct sockaddr * myaddr, socklen_t addrlen) { 
+ 
+   /* bind() returns 0 if ok, -1 on error */
+   return bind(sockfd, myaddr, addrlen);
+ }
+ 
+ 
+-inline int s_listen( int sockfd, int backlog, sidl_BaseInterface *_ex) { 
++int s_listen( int sockfd, int backlog, sidl_BaseInterface *_ex) { 
+   
+   /* listen() returns 0 if ok, -1 on error */
+   return listen(sockfd,backlog);
+diff -u a/runtime/sidlx/sidlx_common.h b/runtime/sidlx/sidlx_common.h
+--- runtime/sidlx/sidlx_common.h	2015-10-02 15:02:22.000000000 -0600
++++ runtime/sidlx/sidlx_common.h	2015-10-02 15:02:33.000000000 -0600
+@@ -87,10 +87,10 @@
+ 		sidl_BaseInterface *_ex );
+ 
+   /* same as bind(),  returns -1 on error, 0 if ok */
+-  inline int s_bind( int sockfd, const struct sockaddr * myaddr, socklen_t addrlen );
++  int s_bind( int sockfd, const struct sockaddr * myaddr, socklen_t addrlen );
+ 
+   /* same as listen(), returns -1 on error, 0 if ok */
+-  inline int s_listen( int sockfd, int backlog, sidl_BaseInterface *_ex); 
++  int s_listen( int sockfd, int backlog, sidl_BaseInterface *_ex); 
+ 
+   /* same as accept(), but using sidl exceptions */
+   int s_accept( int sockfd, struct sockaddr *cliaddr, socklen_t *addrlen, 

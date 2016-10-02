@@ -1,0 +1,29 @@
+--- bin/babel.in	2015-10-08 17:04:57.843544111 -0600
++++ bin/babel.in	2015-10-09 11:12:12.250515375 -0600
+@@ -63,7 +63,7 @@
+ verbose=false;
+ quiet=true;
+ default_repo=true;
+-override_installpath=false;
++override_installpath=true;
+ for a in $@; do
+   case "$a" in
+     --debug) debug=true; a=;;
+@@ -94,7 +94,16 @@
+       echo "         Babel will use what it was configured for,"
+       echo "         You can override with the --override-installpath option"
+     else
+-      THIS_JAVA="$JAVA"
++      if test "x${my_java}" != "x"; then
++        echo "warning: Babel configured for ${JAVA},"
++        echo "         Instead, babel will use $my_java."
++        THIS_JAVA="$my_java"
++      else
++        echo "ERROR: You have chosen to override the java was configured for"
++        echo "       but you do not have another java in your path."
++        echo $PATH
++        exit -1
++      fi
+     fi;
+   fi;
+ fi; 
