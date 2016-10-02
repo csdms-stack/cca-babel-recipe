@@ -42,4 +42,4 @@ build:
     - CC
     - CXX
     - FC
-  string: {{ environ.get('BUILD_STR', '') + environ.get('COMPILER', '') }}
+  string: {{ environ.get('GIT_BUILD_STR', '') }}
