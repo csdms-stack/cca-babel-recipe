@@ -1,14 +1,25 @@
-#! /bin/bash
+#!/bin/bash
 
-if [ "$CONDA_RECIPES" != "runtime" ]; then
-  cd conda-recipes
+PACKAGE_NAME=$1
 
-  CONDA_FILES_TO_UPLOAD=$(conda build --output --python=$TRAVIS_PYTHON_VERSION --numpy=$NUMPY_VERSION $CONDA_RECIPES)
+PREFIX=$(python -c "import sys; print(sys.prefix)")
+ANACONDA=$(which anaconda)
 
-  if [ "$(anaconda whoami)" == "Anonymous User" ]; then
-    anaconda login --username=$CONDA_USERNAME --password=$CONDA_PASSWORD
-  fi
-
-  echo Deploying $CONDA_FILES_TO_UPLOAD to $CONDA_USERNAME
-  anaconda upload --force --user csdms --channel dev $CONDA_FILES_TO_UPLOAD
+if [[ $ANACONDA_TOKEN == "" ]]; then
+  ANACONDA_UPLOAD="$ANACONDA upload"
+else
+  echo Found token
+  ANACONDA_UPLOAD="$ANACONDA -t $ANACONDA_TOKEN upload"
 fi
+
+if [[ "$TRAVIS_TAG" == v* ]]; then
+  export CHANNEL="main"
+else
+  export CHANNEL="dev"
+fi
+
+echo "Uploading to $CHANNEL"
+$ANACONDA_UPLOAD --force --user csdms --channel $CHANNEL \
+  $PREFIX/conda-bld/**/$PACKAGE_NAME*bz2
+
+echo "Done."
