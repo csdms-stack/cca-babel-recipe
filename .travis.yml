@@ -16,4 +16,5 @@ install:
 script:
 - conda build recipe -c conda-forge -c csdms/channel/dev -c csdms
 after_success:
+- if [[ $TRAVIS_BRANCH == "master" ]]; then export CHANNEL="main"; fi
 - bash ci/travis/deploy_to_anaconda.sh $THIS_PACKAGE
