@@ -37,9 +37,9 @@ requirements:
     - pkgconfig
 
 build:
+  number: 0
   script_env:
     - JAVA_HOME
     - CC
     - CXX
     - FC
-  string: {{ environ.get('GIT_BUILD_STR', '') }}

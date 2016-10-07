@@ -8,13 +8,13 @@ env:
   - BUILD_STR="dev"
   - TRAVIS_PYTHON_VERSION="2.7"
   - NUMPY_VERSION="1.9"
-  - secure: X901dQM3vAHWlAAnOtaFqANd9Eu5B8rx6Lol3H3tHlGY96v4xf0kjd/SlTLtRMjX4tDatLyLuuxAU2afrNACwklzJafA5xXy0wkvj/7XsU0SOJdlUQ8xxaqemppuompcgFgweC5MYIlQfY+9LC0EP0IBSJKxrTCIn9VTDgvuLtzbBe3yEYWjxWPsoJVOqe8/43WianGgHgOo25w+2j+NN+1DiASehfn9b6BqXLmYZKwajBZEG7rcWbBr05B5uqprTJWxgJ09mWZ+VhK9RRKsGLhyAF9tQquTaTg9xUxREsrHMHrRj+ESXG4R/k623g+yAJ7I8DB0ND2rMXhCwKX3fDo9JyKRm90BI56La96ZS7aoJTybyy0WRyyEbMSp+kZ/+rrqh25sVk/jRK+4NR4p+STjuvsR5eczffv1N9cwmfc/mcoZ+QVZJ8cr90NUSzhIBaYU5iTv6fdujMaBPnp1t6HhHoTbrraEENJYbn6TEVUrgsFCSjmBwlUIIc1zDXBUYtvDmqwITHSZqvwwcivPRQ46Cv3y8hYxZfsNEkpVON8TdlwgdJr7RtLuCfupgLihyHiL0Wil9MpC4JS+EbA8XjowFTgd9HV2fSZXeigcYD1fn9031MLkqUp2PFh2f3Ol7nFjRK2HP+aRCcRzcdzapvTh6AhWGjalUFzulsAXm3w=
+  - secure: oTwjssB2zaHENK48LRaijXkiaGnEVvLpkxDfcIhaYlwkhrp/lkDrLjL9l3wKbUyMRmZiV8m7yF/kdlz72TduwKl3/ePu+IrZo2+NMrG1oba+CazetktQwjrmtYy+XMMKdybFOPRTaegY3GUhr0QR0ZVwcthkyCTtCpuQfRlZM/JcvYGcxxcbwtuzIVP261jTeMIvJdK1fg89MzyCB8SPVRMQ5sfXlVtARu6fymTiNRaQF4+YUUkS1LCEUm4cTS+rZdMsUsp7YEV9kukWXUQsg9oFiWtwt+YJ13sV2DDiTRERuo6ANejL0jcmKEq92eLNVhBuv6/XEyaYx8svS1Bqu+gwIPUCouTDIU5PmVuCVZDAmEum3lJCKkelZEaoKqRSL08juyjxt63VdDUBhgzkALp3qLfgef8/ZOZ3NjgLFteTHk4a10hTUpb6XrgKgW5tq/cssM9Eq/7V3SsQLABVLmuwQsrS7lYSBAOWvVvevk1AlVbTU0cf9FAhT8wIi8SPkX0zPAUV+iMZVF5Rin2k7dos4N8uqk/vhj4NmXgSa6geMnQAnwdlXlpLogJvCKW9tPtgdaT3jl67sQwPAg/kQ+wOaUjsFIJQ+/uJdmcxLDMJ0QD2Yp7z9ic34TYb9r8W8OIyCDchc9+8ihpB+6ab6c8sabwx2v6uwoLFJ9QmTm0=
 sudo: false
 install:
 - bash ci/travis/install_python.sh $HOME/miniconda
 - export PATH="$HOME/miniconda/bin:$PATH"
 script:
-- conda build recipe -c conda-forge -c csdms/channel/dev -c csdms
+- conda build recipe -c conda-forge -c csdms-stack
 after_success:
 - if [[ $TRAVIS_BRANCH == "master" ]]; then export CHANNEL="main"; fi
 - bash ci/travis/deploy_to_anaconda.sh $THIS_PACKAGE
