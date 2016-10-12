@@ -10,6 +10,13 @@ env:
   - NUMPY_VERSION="1.9"
   - secure: oTwjssB2zaHENK48LRaijXkiaGnEVvLpkxDfcIhaYlwkhrp/lkDrLjL9l3wKbUyMRmZiV8m7yF/kdlz72TduwKl3/ePu+IrZo2+NMrG1oba+CazetktQwjrmtYy+XMMKdybFOPRTaegY3GUhr0QR0ZVwcthkyCTtCpuQfRlZM/JcvYGcxxcbwtuzIVP261jTeMIvJdK1fg89MzyCB8SPVRMQ5sfXlVtARu6fymTiNRaQF4+YUUkS1LCEUm4cTS+rZdMsUsp7YEV9kukWXUQsg9oFiWtwt+YJ13sV2DDiTRERuo6ANejL0jcmKEq92eLNVhBuv6/XEyaYx8svS1Bqu+gwIPUCouTDIU5PmVuCVZDAmEum3lJCKkelZEaoKqRSL08juyjxt63VdDUBhgzkALp3qLfgef8/ZOZ3NjgLFteTHk4a10hTUpb6XrgKgW5tq/cssM9Eq/7V3SsQLABVLmuwQsrS7lYSBAOWvVvevk1AlVbTU0cf9FAhT8wIi8SPkX0zPAUV+iMZVF5Rin2k7dos4N8uqk/vhj4NmXgSa6geMnQAnwdlXlpLogJvCKW9tPtgdaT3jl67sQwPAg/kQ+wOaUjsFIJQ+/uJdmcxLDMJ0QD2Yp7z9ic34TYb9r8W8OIyCDchc9+8ihpB+6ab6c8sabwx2v6uwoLFJ9QmTm0=
 sudo: false
+before_install:
+- |
+  if [[ $TRAVIS_OS_NAME == "osx" ]]; then
+    brew remove --force $(brew list)
+    brew cleanup -s
+    rm -rf $(brew --cache)
+  fi
 install:
 - bash ci/travis/install_python.sh $HOME/miniconda
 - export PATH="$HOME/miniconda/bin:$PATH"
