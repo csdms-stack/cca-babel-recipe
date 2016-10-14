@@ -17,6 +17,7 @@ requirements:
     - numpy
     - libxml2
     - gcc
+    - isl <=0.12.2
     - libgcc
     - libgfortran
     - chasm
@@ -29,6 +30,7 @@ requirements:
     - numpy
     - libxml2
     - gcc
+    - isl <=0.12.2
     - libgcc
     - libgfortran
     - chasm
@@ -37,9 +39,16 @@ requirements:
     - pkgconfig
 
 build:
-  number: 0
+  number: 1
   script_env:
     - JAVA_HOME
     - CC
     - CXX
     - FC
+
+about:
+  home: https://github.com/csdms/cca-babel
+  summary: |
+    Babel is a language interoperability tool intended for use by
+    the high-performance scientific computing community.
+  license: GNU Lesser General Public License v2.1
