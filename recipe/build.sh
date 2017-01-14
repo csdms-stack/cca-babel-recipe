@@ -15,7 +15,9 @@ export JAVA=$JAVAPREFIX/bin/java
 export PYTHON=$PREFIX/bin/python
 export PATH=$JAVAPREFIX/bin:$PATH
 
-ln -s "$PREFIX/lib" "$PREFIX/lib64"
+if [! -d "$PREFIX/lib64" ]; then
+  ln -s "$PREFIX/lib" "$PREFIX/lib64"
+fi
 
 export FCFLAGS="-Wl,-rpath,${PREFIX}/lib"
 export FFLAGS="-Wl,-rpath,${PREFIX}/lib"
@@ -25,7 +27,7 @@ export FFLAGS="-Wl,-rpath,${PREFIX}/lib"
   --with-ltdl-lib=$PREFIX/lib --with-libxml2=$PREFIX --with-chasm=$PREFIX \
   --without-sidlx
 
-make all -j$CPU_COUNT
-make install
+make all -j$CPU_COUNT > stdout.txt || tail -100 stdout.txt
+make install > stdout.txt || tail -100 stdout.txt
 
-rm "$PREFIX"/lib64
+rm "$PREFIX"/lib64 || echo "Unable to remove $PREFIX/lib64"
