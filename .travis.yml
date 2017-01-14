@@ -1,6 +1,6 @@
 language: java
 os:
-- linux
+# - linux
 - osx
 env:
   global:
