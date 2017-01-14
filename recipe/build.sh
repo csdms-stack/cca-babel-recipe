@@ -9,7 +9,7 @@ if [ $(uname) == Darwin ]; then
   export JAVAPREFIX=$(/usr/libexec/java_home)
 else
   # export JAVAPREFIX="${JAVA_HOME:-/usr/java/default}"
-  export JAVAPREFIX="${JAVA_HOME:-/usr}"
+  export JAVAPREFIX="${JAVA_HOME:-/usr/lib/jvm/java}"
 fi
 export JAVA=$JAVAPREFIX/bin/java
 
