@@ -1,19 +1,21 @@
 {% set name = "cca-babel" %}
-{% set version = "1.4.0" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/csdms/{{ name }}
-  patches:
-    - mac-inline.patch [osx]
-    - override-java.patch [unix]
+  url: https://computation.llnl.gov/casc/components/docs/babel-2.0.0.tar.gz
+  fname: babel-2.0.0.tar.gz
+  # git_url: https://github.com/csdms/{{ name }}
+  # patches:
+  #   - mac-inline.patch [osx]
+  #   - override-java.patch [unix]
 
 requirements:
   build:
-    - python >=2.7.13
+    - python >=2.7.13,<3
     - numpy
     - libxml2
     - gcc
@@ -26,7 +28,7 @@ requirements:
     - pkg-config [osx]
 
   run:
-    - python >=2.7.13
+    - python >=2.7.13,<3
     - numpy
     - libxml2
     - gcc
