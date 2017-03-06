@@ -13,7 +13,7 @@ source:
 
 requirements:
   build:
-    - python
+    - python >=2.7.13
     - numpy
     - libxml2
     - gcc
@@ -26,7 +26,7 @@ requirements:
     - pkg-config [osx]
 
   run:
-    - python
+    - python >=2.7.13
     - numpy
     - libxml2
     - gcc
