@@ -6,9 +6,9 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/csdms/{{ name }}
+  url: https://computation.llnl.gov/casc/components/docs/babel-2.0.0.tar.gz
+  fname: babel-2.0.0.tar.gz
   patches:
-    - mac-inline.patch [osx]
     - override-java.patch [unix]
 
 requirements:
@@ -39,12 +39,7 @@ requirements:
     - pkg-config [osx]
 
 build:
-  number: 2
-  script_env:
-    - JAVA_HOME
-    - CC
-    - CXX
-    - FC
+  number: 1
 
 about:
   home: https://github.com/csdms/cca-babel
