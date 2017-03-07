@@ -6,9 +6,10 @@ package:
   version: {{ version }}
 
 source:
-  url: https://computation.llnl.gov/casc/components/docs/babel-2.0.0.tar.gz
-  fname: babel-2.0.0.tar.gz
+  git_url: https://github.com/csdms/{{ name }}
+  git_rev: 2.0
   patches:
+    - mac-inline.patch [osx]
     - override-java.patch [unix]
 
 requirements:
