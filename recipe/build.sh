@@ -28,7 +28,7 @@ export FFLAGS="-Wl,-rpath,${PREFIX}/lib"
   --with-ltdl-lib=$PREFIX/lib --with-libxml2=$PREFIX --with-chasm=$PREFIX \
   --without-sidlx
 
-make all -j$CPU_COUNT > stdout.txt || tail -100 stdout.txt
-make install > stdout.txt || tail -100 stdout.txt
+make all -j$CPU_COUNT > stdout.txt || (tail -100 stdout.txt && echo "ERROR in make all" && exit -1)
+make install > stdout.txt || (tail -100 stdout.txt && echo "ERROR in make install" && exit -1)
 
 rm "$PREFIX"/lib64 || echo "Unable to remove $PREFIX/lib64"
