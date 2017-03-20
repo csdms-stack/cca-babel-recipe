@@ -27,15 +27,9 @@ export FFLAGS="-Wl,-rpath,${PREFIX}/lib"
 ./configure --prefix=$PREFIX --disable-documentation \
   --with-libparsifal=$PREFIX --with-ltdl-include=$PREFIX/include \
   --with-ltdl-lib=$PREFIX/lib --with-libxml2=$PREFIX --with-chasm=$PREFIX \
-  --without-sidlx &> configure.txt
-cp configure.txt /Users/huttone/git/csdms-stack/cca-babel-recipe/recipe
+  --without-sidlx
 
-# make all -j$CPU_COUNT > stdout.txt || (tail -100 stdout.txt && echo "ERROR in make all" && exit -1)
-# make install > stdout.txt || (tail -100 stdout.txt && echo "ERROR in make install" && exit -1)
-make all -j$CPU_COUNT &> make.all.txt
-cp make.all.txt /Users/huttone/git/csdms-stack/cca-babel-recipe/recipe
-
-make install &> make.install.txt
-cp make.install.txt /Users/huttone/git/csdms-stack/cca-babel-recipe/recipe
+make all -j$CPU_COUNT > stdout.txt || (tail -100 stdout.txt && echo "ERROR in make all" && exit -1)
+make install > stdout.txt || (tail -100 stdout.txt && echo "ERROR in make install" && exit -1)
 
 rm "$PREFIX"/lib64 || echo "Unable to remove $PREFIX/lib64"
