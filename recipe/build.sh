@@ -24,6 +24,8 @@ fi
 export FCFLAGS="-Wl,-rpath,${PREFIX}/lib"
 export FFLAGS="-Wl,-rpath,${PREFIX}/lib"
 
+export CONFIG_SHELL=/bin/bash
+
 ./configure --prefix=$PREFIX --disable-documentation \
   --with-libparsifal=$PREFIX --with-ltdl-include=$PREFIX/include \
   --with-ltdl-lib=$PREFIX/lib --with-libxml2=$PREFIX --with-chasm=$PREFIX \
