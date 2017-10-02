@@ -37,8 +37,7 @@ install:
 - conda install python=$TRAVIS_PYTHON_VERSION
 - conda install -q conda-build anaconda-client coverage sphinx
 script:
-  - conda build ./recipe --numpy=$NUMPY_VERSION -c csdms-stack -c conda-forge
+  - conda build ./recipe --numpy=$NUMPY_VERSION -c csdms-stack -c conda-forge --old-build-string
 after_success:
-- curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py
-  > $HOME/anaconda_upload.py
-- echo $ANACONDA_TOKEN | python $HOME/anaconda_upload.py ./recipe --channel=main --org=csdms-stack --token=-
+- curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py > $HOME/anaconda_upload.py
+- echo $ANACONDA_TOKEN | python $HOME/anaconda_upload.py ./recipe --channel=main --org=csdms-stack --old-build-string --token=-
