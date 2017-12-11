@@ -48,9 +48,6 @@ build:
   number: 2
   script_env:
     - JAVA_HOME
-    - CC
-    - CXX
-    - FC
 
 about:
   home: https://github.com/csdms/cca-babel
