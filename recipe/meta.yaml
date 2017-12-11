@@ -16,7 +16,8 @@ requirements:
     - python >=2.7.13,<3
     - numpy
     - libxml2
-    - gcc
+    - gcc [osx]
+    - gcc_linux-64 [linux]
     - isl <=0.12.2
     - libgcc
     - libgfortran
@@ -29,7 +30,8 @@ requirements:
     - python >=2.7.13,<3
     - numpy
     - libxml2
-    - gcc
+    - gcc [osx]
+    - gcc_linux-64 [linux]
     - isl <=0.12.2
     - libgcc
     - libgfortran
