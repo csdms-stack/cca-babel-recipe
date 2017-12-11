@@ -17,8 +17,10 @@ requirements:
     - numpy 1.11.*
     - libxml2
     - clang_osx-64 [osx]
+    - clangxx_osx-64 [osx]
     - gfortran_osx-64 [osx]
     - gcc_linux-64 [linux]
+    - gxx_linux-64 [linux]
     - gfortran_linux-64 [linux]
     - isl <=0.12.2
     - libgcc
@@ -33,8 +35,10 @@ requirements:
     - numpy >=1.11
     - libxml2
     - clang_osx-64 [osx]
+    - clangxx_osx-64 [osx]
     - gfortran_osx-64 [osx]
     - gcc_linux-64 [linux]
+    - gxx_linux-64 [linux]
     - gfortran_linux-64 [linux]
     - isl <=0.12.2
     - libgcc
