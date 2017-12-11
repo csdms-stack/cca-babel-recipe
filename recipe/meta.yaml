@@ -14,7 +14,7 @@ source:
 requirements:
   build:
     - python >=2.7.13,<3
-    - numpy x.x
+    - numpy
     - libxml2
     - gcc
     - isl <=0.12.2
@@ -27,7 +27,7 @@ requirements:
 
   run:
     - python >=2.7.13,<3
-    - numpy x.x
+    - numpy
     - libxml2
     - gcc
     - isl <=0.12.2
