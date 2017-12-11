@@ -1,6 +1,6 @@
-export CC=$(which gcc)
-export CXX=$(which g++)
-export FC=$(which gfortran)
+# export CC=$(which gcc)
+# export CXX=$(which g++)
+# export FC=$(which gfortran)
 export F77=$FC
 export F90=$FC
 export F03=$FC
