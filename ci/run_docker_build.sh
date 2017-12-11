@@ -42,7 +42,8 @@ conda clean --lock
 
 conda config --set always_yes yes --set changeps1 no
 conda install python=2.7
-conda install -q conda-build anaconda-client coverage sphinx
+conda install -q 'conda-build>=3'
+conda install -q anaconda-client coverage sphinx
 
 conda build /recipe_root --quiet || exit 1
 
