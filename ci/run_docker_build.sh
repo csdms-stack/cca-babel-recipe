@@ -13,9 +13,9 @@ docker info
 config=$(cat <<CONDARC
 
 channels:
- - conda-forge
  - csdms-stack
  - defaults # As we need conda-build
+ - conda-forge
 
 conda-build:
  root-dir: /feedstock_root/build_artefacts
