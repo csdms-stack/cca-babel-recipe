@@ -3,10 +3,6 @@ os:
 - osx
 osx_image: xcode6.4
 env:
-  matrix:
-  - NUMPY_VERSION="1.11"
-  - NUMPY_VERSION="1.12"
-  - NUMPY_VERSION="1.13"
   global:
   - MACOSX_DEPLOYMENT_TARGET="10.9"
   - CONDA_PREFIX=$HOME/miniconda
@@ -36,7 +32,7 @@ install:
 - conda install python=$TRAVIS_PYTHON_VERSION
 - conda install -q conda-build anaconda-client coverage sphinx
 script:
-  - conda build ./recipe --numpy=$NUMPY_VERSION -c csdms-stack -c conda-forge --old-build-string
+  - conda build ./recipe -c csdms-stack -c defaults -c conda-forge --old-build-string
 after_success:
 - curl https://raw.githubusercontent.com/csdms/ci-tools/master/anaconda_upload.py > $HOME/anaconda_upload.py
 - echo $ANACONDA_TOKEN | python $HOME/anaconda_upload.py ./recipe --channel=main --org=csdms-stack --old-build-string --token=-
