@@ -22,8 +22,8 @@ if [ ! -d "$PREFIX/lib64" ]; then
 fi
 
 export CXXFLAGS="--std=c++14"
-export FCFLAGS="-Wl,-rpath,${PREFIX}/lib"
-export FFLAGS="-Wl,-rpath,${PREFIX}/lib"
+export FFLAGS="-Wl,-rpath,${PREFIX}/lib $FFLAGS"
+export FCFLAGS=$FFLAGS
 
 export CONFIG_SHELL=/bin/bash
 
