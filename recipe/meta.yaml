@@ -9,11 +9,14 @@ source:
   git_url: https://github.com/csdms/{{ name }}
   patches:
     - mac-inline.patch [osx]
+    - fortran_logical_test.patch
     - override-java.patch [unix]
 
 requirements:
   build:
     - python >=2.7.13,<3
+    - autoconf
+    - automake
     - numpy 1.11.*
     - libxml2
     - clang_osx-64 [osx]
