@@ -8,6 +8,7 @@ export F03=$FC
 if [ $(uname) == Darwin ]; then
   export MACOSX_DEPLOYMENT_TARGET="10.9"
   export JAVAPREFIX=$(/usr/libexec/java_home)
+  export LDFLAGS="-pie -headerpad_max_install_names -Wl,-rpath,${PREFIX}/lib"
 else
   # export JAVAPREFIX="${JAVA_HOME:-/usr/java/default}"
   export JAVAPREFIX="${JAVA_HOME:-/usr/lib/jvm/java}"
@@ -21,11 +22,13 @@ if [ ! -d "$PREFIX/lib64" ]; then
   ln -s "$PREFIX/lib" "$PREFIX/lib64"
 fi
 
-export CXXFLAGS="--std=c++14 $CXXFLAGS"
-export FFLAGS="-Wl,-rpath,${PREFIX}/lib $FFLAGS"
+export CXXFLAGS="--std=c++11 $CXXFLAGS"
+# export FFLAGS="-Wl,-rpath,${PREFIX}/lib $FFLAGS"
 export FCFLAGS=$FFLAGS
 
 export CONFIG_SHELL=/bin/bash
+
+autoreconf -fi
 
 ./configure --prefix=$PREFIX --disable-documentation \
   --with-libparsifal=$PREFIX --with-ltdl-include=$PREFIX/include \
