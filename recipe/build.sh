@@ -22,7 +22,7 @@ if [ ! -d "$PREFIX/lib64" ]; then
   ln -s "$PREFIX/lib" "$PREFIX/lib64"
 fi
 
-export CXXFLAGS="--std=c++11 $CXXFLAGS"
+export CXXFLAGS="$CXXFLAGS -std=c++11"
 # export FFLAGS="-Wl,-rpath,${PREFIX}/lib $FFLAGS"
 export FCFLAGS=$FFLAGS
 
