@@ -1,0 +1,13 @@
+diff --git a/runtime/m4/llnl_fortran_logical_test.m4 b/runtime/m4/llnl_fortran_logical_test.m4
+index 5b55506..3968dbb 100644
+--- a/runtime/m4/llnl_fortran_logical_test.m4
++++ b/runtime/m4/llnl_fortran_logical_test.m4
+@@ -49,7 +49,7 @@ AC_COMPILE_IFELSE([
+   AC_LANG_SOURCE([LLNL_FORTRAN_LOGICAL_TEST_PROLOGUE($2)
+ void TESTFUNC(char *a, char *b)
+ {
+-  printf("%d\n", b - a);
++  printf("%ld\n", b - a);
+   fflush(stdout); /* needed for gfortran */
+ }
+ ])],
